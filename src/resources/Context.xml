@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- bean definitions here -->
+    <util:map id="clothesList" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Double">
+        <entry key="T-shirt">
+            <value>15.50</value>
+        </entry>
+        <entry key="Jean">
+            <value>25.00</value>
+        </entry>
+        <entry key="sweater">
+            <value>10.99</value>
+        </entry>
+        <entry key="Sock">
+            <value>3.00</value>
+        </entry>
+    </util:map>
+
+    <util:map id="foodList" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Double">
+        <entry key="Milk">
+            <value>1.50</value>
+        </entry>
+        <entry key="Banana">
+            <value>2.00</value>
+        </entry>
+        <entry key="Bread">
+            <value>0.75</value>
+        </entry>
+        <entry key="Honey">
+            <value>3.00</value>
+        </entry>
+        <entry key="Chocolate">
+            <value>1.00</value>
+        </entry>
+        <entry key="Cheese">
+            <value>3.25</value>
+        </entry>
+    </util:map>
+
+    <util:map id="productList" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Double">
+        <entry key="Computer">
+            <value>750.0</value>
+        </entry>
+        <entry key="Phone">
+            <value>400.00</value>
+        </entry>
+        <entry key="HDMI-CABLE">
+            <value>2.75</value>
+        </entry>
+        <entry key="LAPTOP">
+            <value>650.00</value>
+        </entry>
+        <entry key="MICROPHONE">
+            <value>15.00</value>
+        </entry>
+    </util:map>
+
+    <bean id="clothesStore" class="org.renova.domain.ClothesStore" init-method="welcome" destroy-method="goodBy">
+        <property name="clothesList" ref="clothesList">
+        </property>
+    </bean>
+
+    <bean id="foodStore" class="org.renova.domain.FoodStore" init-method="welcome" destroy-method="goodBy">
+        <property name="foodList" ref="foodList">
+        </property>
+    </bean>
+
+    <bean id="technologyStore" class="org.renova.domain.TechnologyStore" init-method="welcome" destroy-method="goodBy">
+        <property name="productList" ref="productList">
+        </property>
+    </bean>
+
+    <bean id = "customer" class = "org.renova.domain.Customer">
+        <property name = "test" value = "Hello World!"/>
+    </bean>
+
+    <bean id ="companyCustomer" class = "org.renova.domain.CompanyCustomer" parent = "customer">
+        <property name = "companyName" value = "Medyasoft"/>
+    </bean>
+
+    <bean id ="individualCustomer" class = "org.renova.domain.IndividualCustomer" parent = "customer">
+        <constructor-arg index="0" value="Onur Solmaz"/>
+        <constructor-arg index="1" value="Male"/>
+    </bean>
+
+</beans>
