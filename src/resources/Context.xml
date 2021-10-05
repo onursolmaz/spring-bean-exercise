@@ -82,8 +82,8 @@
     </bean>
 
     <bean id ="individualCustomer" class = "org.renova.domain.IndividualCustomer" parent = "customer">
-        <constructor-arg index="0" value="Onur Solmaz"/>
-        <constructor-arg index="1" value="Male"/>
+        <constructor-arg name="name" value="Onur Solmaz"/>
+        <constructor-arg name="gender" value="Male"/>
     </bean>
 
 </beans>
